@@ -4,7 +4,8 @@ Where do rich countries sit in their financial cycle right now — and is any of
 running hot enough to look like the run-up to a banking crisis?
 
 This is a live-data replication of Chen & Svirydzenka (2021), *"Financial Cycles – Early
-Warning Indicators of Banking Crises?"* (IMF WP/21/116), across 30 advanced markets.
+Warning Indicators of Banking Crises?"* (IMF WP/21/116), across 30 advanced markets, with
+an exploratory credit/equity/property index configured for 25 emerging markets.
 
 **→ [See the board](https://ets1199.github.io/financial-cycles/)**
 
@@ -22,9 +23,18 @@ It is **not a crisis forecast.** The thresholds were calibrated on *other* count
 crises, so a flag means "this looks like conditions that have preceded trouble
 elsewhere" — not "a crisis is coming here."
 
+The emerging-market index uses the Table 5 credit, equity, and property thresholds
+(2.9%, 10.3%, 7.5%) and normalized weights (0.242, 0.373, 0.385), with cycle bands of
+5–43, 8–18, and 4–29 quarters, respectively. Complete inputs are configured for 12 of the
+25 requested markets. Credit and real residential property prices are BIS series mirrored
+by FRED; equity is the OECD quarterly share-price index except Malaysia and Thailand,
+which use the verified IMF IFS quarterly share-price index. Other markets remain listed
+but unscored where one or more required series are unavailable.
+
 ## Running it
 
 ```bash
+python fetch_data.py --emerging      # fetch configured emerging-market inputs only
 python fetch_data.py --refresh    # pull every series into data/raw/ (quarterly)
 python -m engine.run              # compute gaps and the index
 python docs/build_overview.py     # regenerate the site's data file

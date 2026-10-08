@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Advanced-Market Overheating Index</title>
+<title>Financial Cycles — Advanced-Market Overheating Index</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌡️</text></svg>">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -13,10 +13,11 @@
 
 <main class="wrap">
   <div class="mast">
-    <div class="kicker">Financial-cycle early warning &middot; Advanced markets</div>
-    <h1>Advanced-Market Overheating Index</h1>
+    <div class="kicker">Financial-cycle early warning &middot; Advanced and emerging markets</div>
+    <h1 id="pageTitle">Advanced-Market Overheating Index</h1>
     <nav class="tabs">
-      <a class="tab active" href="index.html">Board</a>
+      <a class="tab active" href="#board" data-view="board">Board</a>
+      <a class="tab" href="#emerging" data-view="emerging">Emerging markets</a>
       <a class="tab" href="about.html">About</a>
       <a class="tab" href="methodology.html">Methodology</a>
       <a class="tab" href="references.html">References</a>
@@ -53,13 +54,32 @@
         <tbody></tbody>
       </table>
       <p class="cap" id="coverage"></p>
-      <p class="cap">Emerging markets with their own thresholds and metrics are planned for a future update.</p>
     </section>
-    <footer>
-      <span>Method: Chen &amp; Svirydzenka (2021), IMF WP/21/116. Filter: Christiano–Fitzgerald.
-        Data: FRED, Eurostat, ONS, ABS, StatCan, IMF IFS.</span>
-      <span id="ovVintage" class="mono"></span>
-    </footer>
+  </div>
+
+  <!-- ===================== EMERGING MARKETS ===================== -->
+  <div class="view" id="emerging">
+    <section style="margin-top:26px">
+      <h2>Emerging-market cycle monitors</h2>
+      <p class="boardnote">Exploratory credit/equity/property index for <span id="emCount"></span>
+        emerging markets with complete data. The index uses thresholds
+        of +2.9%, +10.3%, and +7.5% and normalized weights of
+        0.242, 0.373, and 0.385, respectively. Filter bands are credit 5–43, equity 8–18,
+        and property 4–29 quarters. Markets without all three required series are excluded;
+        no partial index is calculated.</p>
+      <table class="board" id="em-board">
+        <thead><tr>
+          <th data-sort="name">Market</th>
+          <th data-sort="oi" class="r" aria-sort="descending">Index</th>
+          <th data-sort="credit" class="r">Credit gap</th>
+          <th data-sort="equity" class="r">Real equity gap</th>
+          <th data-sort="property" class="r">Property gap</th>
+          <th data-sort="q" class="r">As of</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+      <p class="cap" id="emCoverage"></p>
+    </section>
   </div>
 
   <!-- ===================== DETAIL ===================== -->
@@ -68,22 +88,36 @@
     <p class="eyebrow" id="dEyebrow">Advanced-market overheating</p>
     <div class="verdict" id="verdict"></div>
     <section>
-      <figure>
+      <figure id="equityFigure">
         <div class="fig-head">
           <span class="fig-title">Real equity-price gap</span>
-          <span class="fig-note">threshold <span class="mono">+6.7%</span> &middot; band 8–22 quarters</span>
+          <span class="fig-note" id="equityNote">threshold <span class="mono">+6.7%</span> &middot; band 8–22 quarters</span>
         </div>
         <div id="chartEquity"></div>
       </figure>
-      <figure>
+      <figure id="gdpFigure">
         <div class="fig-head">
           <span class="fig-title">Output gap</span>
-          <span class="fig-note">threshold <span class="mono">+1.3%</span> &middot; band 3–51 quarters</span>
+          <span class="fig-note" id="gdpNote">threshold <span class="mono">+1.3%</span> &middot; band 3–51 quarters</span>
         </div>
         <div id="chartGdp"></div>
       </figure>
+      <figure id="creditFigure" hidden>
+        <div class="fig-head">
+          <span class="fig-title">Credit gap</span>
+          <span class="fig-note" id="creditNote"></span>
+        </div>
+        <div id="chartCredit"></div>
+      </figure>
+      <figure id="propertyFigure" hidden>
+        <div class="fig-head">
+          <span class="fig-title">Property gap</span>
+          <span class="fig-note" id="propertyNote"></span>
+        </div>
+        <div id="chartProperty"></div>
+      </figure>
     </section>
-    <section>
+    <section id="signalSection">
       <div class="sec-head">
         <h2>The signal each quarter</h2>
         <p>Each cell is what the index would have measured at each quarter.
@@ -104,9 +138,14 @@
           <span id="lvDots"><span class="swatch-dots"></span> Time not covered by Laeven &amp; Valencia (1970&ndash;2025)</span>
         </div>
       </figure>
-      <div class="callout" id="dCaveat"></div>
     </section>
+    <div class="callout" id="dCaveat"></div>
   </div>
+  <footer id="pageFooter">
+    <span>Method: Chen &amp; Svirydzenka (2021), IMF WP/21/116. Filter: Christiano–Fitzgerald.
+      Data: FRED, Eurostat, ONS, ABS, StatCan, IMF IFS.</span>
+    <span id="ovVintage" class="mono"></span>
+  </footer>
 </main>
 
 <script src="index_data.js"></script>
@@ -116,7 +155,8 @@ const NS="http://www.w3.org/2000/svg";
 const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;};
 const qNum=q=>{const m=/^(\d{4})Q(\d)$/.exec(q);return +m[1]+(+m[2]-1)/4;};
 const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-const byName=Object.fromEntries(DATA.countries.map(c=>[c.name,c]));
+const markets=[...DATA.countries,...(DATA.emerging_markets||[])];
+const byName=Object.fromEntries(markets.map(c=>[c.name,c]));
 const tt=$("#tt");
 function showTT(html,x,y){tt.innerHTML=html;tt.style.opacity=1;const w=tt.offsetWidth,h=tt.offsetHeight;
   let L=x+14,T=y-h-12;if(L+w>innerWidth-8)L=x-w-14;if(T<8)T=y+16;tt.style.left=L+"px";tt.style.top=T+"px";}
@@ -165,7 +205,57 @@ const sign=v=>(v>0?"+":"")+v;
   draw();
   $("#coverage").innerHTML=`${DATA.dropped.length} of the paper's advanced markets have been
     excluded due to lack of data: ${DATA.dropped.join(", ")}.`;
-  const vs=DATA.countries.map(c=>c.vintage).filter(Boolean).sort();
+  const monitors=DATA.emerging_markets||[];
+  $("#emCount").textContent=DATA.summary.n_emerging_scored;
+  const emergingDropped=DATA.emerging_dropped||[];
+  $("#emCoverage").innerHTML=`${emergingDropped.length} of the paper's emerging markets have been
+    excluded due to lack of data: ${emergingDropped.join(", ")}.`;
+  const emBody=$("#em-board tbody");
+  const emKey={
+    name:c=>c.name,
+    oi:c=>c.latest.oi,
+    credit:c=>c.latest.credit,
+    equity:c=>c.latest.equity,
+    property:c=>c.latest.property,
+    q:c=>c.latest.q,
+  };
+  let emSortBy="oi",emDesc=true;
+  function drawEmerging(){
+    const rows=[...monitors].sort((a,b)=>{
+      const x=emKey[emSortBy](a),y=emKey[emSortBy](b);
+      const d=typeof x==="string"?x.localeCompare(y):x-y;
+      return (emDesc?-d:d)||a.name.localeCompare(b.name);
+    });
+    emBody.innerHTML="";
+    rows.forEach(c=>{
+      const tr=document.createElement("tr");
+      const L=c.latest;
+      tr.tabIndex=0;tr.setAttribute("role","link");
+      tr.setAttribute("aria-label",`${c.name}, exploratory index ${L.oi.toFixed(3)}, credit gap ${sign(L.credit)} percent, equity gap ${sign(L.equity)} percent, property gap ${sign(L.property)} percent, as of ${L.q}`);
+      tr.innerHTML=`<td class="nm">${c.name}</td>
+        <td class="oi">${L.oi.toFixed(3)}</td>
+        <td class="num">${sign(L.credit)}%</td><td class="num">${sign(L.equity)}%</td>
+        <td class="num">${sign(L.property)}%</td><td class="q">${L.q}</td>`;
+      tr.addEventListener("click",()=>showDetail(c.name));
+      tr.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();showDetail(c.name);}});
+      emBody.appendChild(tr);
+    });
+    $("#em-board").querySelectorAll("th[data-sort]").forEach(th=>{
+      const on=th.dataset.sort===emSortBy;
+      th.classList.toggle("sorted",on);
+      if(on)th.setAttribute("aria-sort",emDesc?"descending":"ascending"); else th.removeAttribute("aria-sort");
+    });
+  }
+  $("#em-board").querySelectorAll("th[data-sort]").forEach(th=>{
+    th.addEventListener("click",()=>{
+      const k=th.dataset.sort;
+      if(k===emSortBy)emDesc=!emDesc;
+      else {emSortBy=k;emDesc=k!=="name";}
+      drawEmerging();
+    });
+  });
+  drawEmerging();
+  const vs=[...DATA.countries,...monitors].map(c=>c.vintage).filter(Boolean).sort();
   $("#ovVintage").textContent="Last updated "+(vs[vs.length-1]||"");
 })();
 
@@ -273,17 +363,21 @@ function openQMenu(c,r,x,y){
   const win=rid=>`https://fred.stlouisfed.org/series/${rid}?cosd=${yr-3}-01-01&coed=${Math.min(yr+3,now)}-12-31`;
   const A=(href,txt)=>`<a href="${href}" target="_blank" rel="noopener">${txt} &nearr;</a>`;
   let h=`<div class="tq">${c.name} &middot; ${r.q}</div>`;
-  if(c.links.equity)h+=c.links.equity.p==="fred"
-    ?A(win(c.links.equity.rid),`Share prices around ${yr} — FRED`)
-    :A(`https://db.nomics.world/IMF/IFS/${c.links.equity.rid}`,"Share prices — IMF IFS");
-  if(c.links.gdp)h+=c.links.gdp.p==="fred"
-    ?A(win(c.links.gdp.rid),`Real GDP around ${yr} — FRED`)
-    :A(`https://db.nomics.world/IMF/IFS/${c.links.gdp.rid}`,"Real GDP — IMF IFS");
-  const ep=(c.crises||[]).find(e=>yr>=e.start&&yr<=e.end);
-  if(ep)h+=`<div class="cx">Systemic banking crisis era (Laeven&ndash;Valencia${ep.borderline?", borderline":""}), ${ep.start}&ndash;${ep.end}${ep.truncated?" (capped)":""}</div>`;
-  else if(yr<1970||yr>2025)h+=`<div class="cx">This quarter is outside the Laeven&ndash;Valencia
-    database&#39;s observation window (1970&ndash;2025) — it can neither confirm nor rule out
-    a crisis here.</div>`;
+  const sourceLabels={credit:"Credit",equity:"Share prices",property:"Real residential property prices",gdp:"Real GDP"};
+  for(const [key,source] of Object.entries(c.links||{})){
+    const label=sourceLabels[key]||key;
+    if(source.p==="fred"||source.p==="fred_graph")
+      h+=A(win(source.rid),`${label} around ${yr} — FRED`);
+    else if(source.p==="imf_ifs")
+      h+=A(`https://db.nomics.world/IMF/IFS/${source.rid}`,`${label} — IMF IFS`);
+  }
+  if(c.group!=="emerging"){
+    const ep=(c.crises||[]).find(e=>yr>=e.start&&yr<=e.end);
+    if(ep)h+=`<div class="cx">Systemic banking crisis era (Laeven&ndash;Valencia${ep.borderline?", borderline":""}), ${ep.start}&ndash;${ep.end}${ep.truncated?" (capped)":""}</div>`;
+    else if(yr<1970||yr>2025)h+=`<div class="cx">This quarter is outside the Laeven&ndash;Valencia
+      database&#39;s observation window (1970&ndash;2025) — it can neither confirm nor rule out
+      a crisis here.</div>`;
+  }
   qm.innerHTML=h;qm.style.display="block";
   const w=qm.offsetWidth,hh=qm.offsetHeight;
   qm.style.left=Math.min(x+12,innerWidth-w-8)+"px";
@@ -295,38 +389,109 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")qm.style.display="no
 /* ---------- detail ---------- */
 let current=null;
 function renderDetail(c){
-  const L=c.latest;
-  $("#dEyebrow").textContent=`Advanced-market overheating · ${c.name}`;
-  $("#verdict").innerHTML=`
-    <div class="dial"><div class="num">${L.oi.toFixed(3)}</div></div>
-    <div class="vbody">
-      <h2>${c.name} &mdash; ${L.q}</h2>
+  const emerging=c.group==="emerging";
+  const emergingCharts={credit:"#chartCredit",equity:"#chartEquity",property:"#chartProperty"};
+  $("#signalSection").hidden=emerging;
+  $("#verdict").classList.toggle("emerging",emerging);
+  if(emerging){
+    const L=c.latest;
+    const components=["credit","equity","property"];
+    const labels={credit:"Credit",equity:"Equity",property:"Property"};
+    const figures={credit:"#creditFigure",equity:"#equityFigure",property:"#propertyFigure"};
+    const notes={credit:"#creditNote",equity:"#equityNote",property:"#propertyNote"};
+    $("#dEyebrow").textContent=`Emerging-market monitor · ${c.name}`;
+    $("#verdict").innerHTML=`<div class="dial"><div class="num">${L.oi.toFixed(3)}</div></div>
+      <div class="vbody"><h2>${c.name} &mdash; exploratory index · ${L.q}</h2>
       <div class="readouts">
-        <div class="readout"><div class="k">Equity-price gap</div>
-          <div class="v">${sign(L.eq)}% <small>vs +${DATA.thresholds.equity}% threshold</small></div></div>
-        <div class="readout"><div class="k">Output gap</div>
-          <div class="v">${sign(L.gd)}% <small>vs +${DATA.thresholds.gdp}% threshold</small></div></div>
-      </div>
-    </div>`;
-  lineChart("#chartEquity",{pts:c.equity.map(d=>({q:d.q,x:qNum(d.q),y:d.v})),threshold:DATA.thresholds.equity,name:"Equity gap",aria:`Real equity-price gap for ${c.name}`});
-  lineChart("#chartGdp",{pts:c.gdp.map(d=>({q:d.q,x:qNum(d.q),y:d.v})),threshold:DATA.thresholds.gdp,name:"Output gap",height:210,aria:`Output gap for ${c.name}`});
-  buildStrip(c.oi_hist,c);
-  $("#dCaveat").innerHTML=`<b>Latest reading ${L.q}.</b><br>
-    See <a href="methodology.html">Methodology</a> for how real-time readings work.`;
+        ${components.map(component=>`<div class="readout"><div class="k">${labels[component]} gap</div><div class="v">${sign(L[component])}% <small>vs +${DATA.emerging_method.thresholds[component]}%</small></div></div>`).join("")}
+      </div></div>`;
+    components.forEach(component=>{
+      $(figures[component]).hidden=false;
+      $(notes[component]).textContent=`threshold +${DATA.emerging_method.thresholds[component]}% · band ${DATA.emerging_method.bands[component].join("–")} quarters`;
+    });
+    $("#gdpFigure").hidden=true;
+    $("#dCaveat").innerHTML=`<b>Exploratory, not calibrated for emerging markets.</b> The index
+      uses credit, equity, and property thresholds (+${DATA.emerging_method.thresholds.credit}%,
+      +${DATA.emerging_method.thresholds.equity}%, +${DATA.emerging_method.thresholds.property}%)
+      and normalized weights (${DATA.emerging_method.weights.credit},
+      ${DATA.emerging_method.weights.equity}, ${DATA.emerging_method.weights.property}).
+      All gaps and the score are reported as of the latest quarter with complete inputs (${L.q}).`;
+    components.forEach(component=>{
+      c[component]=c[component].filter(point=>qNum(point.q)<=qNum(L.q));
+    });
+  }else{
+    const L=c.latest;
+    $("#dEyebrow").textContent=`Advanced-market overheating · ${c.name}`;
+    $("#verdict").innerHTML=`
+      <div class="dial"><div class="num">${L.oi.toFixed(3)}</div></div>
+      <div class="vbody">
+        <h2>${c.name} &mdash; ${L.q}</h2>
+        <div class="readouts">
+          <div class="readout"><div class="k">Equity-price gap</div>
+            <div class="v">${sign(L.eq)}% <small>vs +${DATA.thresholds.equity}% threshold</small></div></div>
+          <div class="readout"><div class="k">Output gap</div>
+            <div class="v">${sign(L.gd)}% <small>vs +${DATA.thresholds.gdp}% threshold</small></div></div>
+        </div>
+      </div>`;
+    $("#equityNote").innerHTML=`threshold <span class="mono">+${DATA.thresholds.equity}%</span> &middot; band 8–22 quarters`;
+    $("#gdpNote").innerHTML=`threshold <span class="mono">+${DATA.thresholds.gdp}%</span> &middot; band 3–51 quarters`;
+    buildStrip(c.oi_hist,c);
+    $("#dCaveat").innerHTML=`<b>Latest reading ${L.q}.</b><br>
+      See <a href="methodology.html">Methodology</a> for how real-time readings work.`;
+  }
+  if(emerging){
+    for(const component of ["credit","equity","property"]){
+      lineChart(emergingCharts[component],{
+        pts:c[component].map(d=>({q:d.q,x:qNum(d.q),y:d.v})),
+        threshold:DATA.emerging_method.thresholds[component],
+        name:`${component} gap`,aria:`${component} gap for ${c.name}`,
+      });
+    }
+  }else{
+    $("#creditFigure").hidden=true;
+    $("#propertyFigure").hidden=true;
+    $("#equityFigure").hidden=false;
+    $("#gdpFigure").hidden=false;
+    lineChart("#chartEquity",{pts:c.equity.map(d=>({q:d.q,x:qNum(d.q),y:d.v})),threshold:DATA.thresholds.equity,name:"Equity gap",aria:`Real equity-price gap for ${c.name}`});
+    lineChart("#chartGdp",{pts:c.gdp.map(d=>({q:d.q,x:qNum(d.q),y:d.v})),threshold:DATA.thresholds.gdp,name:"Output gap",height:210,aria:`Output gap for ${c.name}`});
+  }
 }
 
-/* ---------- view routing (board <-> country detail; prose lives on its own pages) ---------- */
-function setView(v){for(const id of ["board","detail"])$("#"+id).classList.toggle("active",id===v);}
-function showBoard(){current=null;setView("board");history.replaceState(null,"","#");window.scrollTo(0,0);}
-function showDetail(name){const c=byName[name];if(!c)return;current=name;setView("detail");
+/* ---------- view routing (market tabs <-> country detail; prose lives on its own pages) ---------- */
+let listView="board";
+function setView(v){
+  for(const id of ["board","emerging","detail"])$("#"+id).classList.toggle("active",id===v);
+  $("#pageFooter").hidden=v==="detail";
+  const activeTab=v==="detail"?listView:v;
+  $("#pageTitle").textContent=activeTab==="emerging"
+    ?"Emerging-Market Cycle Monitor":"Advanced-Market Overheating Index";
+  $("#back").textContent=activeTab==="emerging"?"← All emerging markets":"← All advanced markets";
+  document.querySelectorAll(".tabs .tab[data-view]").forEach(tab=>
+    tab.classList.toggle("active",tab.dataset.view===activeTab));
+}
+function showList(v,updateHash=true){
+  listView=v;current=null;setView(v);
+  if(updateHash)history.replaceState(null,"","#"+v);
+  window.scrollTo(0,0);
+}
+function showBoard(){showList(listView);}
+function showDetail(name){const c=byName[name];if(!c)return;current=name;
+  listView=c.group==="emerging"?"emerging":"board";setView("detail");
   renderDetail(c);history.replaceState(null,"","#"+encodeURIComponent(name));window.scrollTo(0,0);}
 $("#back").addEventListener("click",showBoard);
+document.querySelectorAll(".tabs .tab[data-view]").forEach(tab=>
+  tab.addEventListener("click",event=>{
+    event.preventDefault();
+    showList(tab.dataset.view);
+  }));
 
 /* deep-link on load (legacy tab hashes redirect to their own pages) */
 (function(){const h=decodeURIComponent(location.hash.slice(1));
   if(h==="about")location.replace("about.html");
   else if(h==="methodology")location.replace("methodology.html");
   else if(h==="references")location.replace("references.html");
+  else if(h==="emerging")showList("emerging",false);
+  else if(h==="board")showList("board",false);
   else if(h&&byName[h])showDetail(h);})();
 </script>
 </body>

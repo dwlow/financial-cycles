@@ -16,11 +16,16 @@ from .config import CountryConfig, SeriesSpec, RAW
 
 
 def _read(spec: SeriesSpec) -> pd.Series:
-    """Load one CSV as a date-indexed float Series (missing '.'/'' -> dropped)."""
+    """Load positive observations as a date-indexed float Series.
+
+    Every configured input is log-transformed downstream, so nonpositive source
+    values (for example, zero placeholders in early equity-index history) are invalid.
+    """
     df = pd.read_csv(RAW / spec.file, na_values=[".", ""])
     dates = pd.to_datetime(df["observation_date"])
     vals = pd.to_numeric(df[spec.column], errors="coerce")
-    return pd.Series(vals.to_numpy(), index=dates).dropna()
+    series = pd.Series(vals.to_numpy(), index=dates).dropna()
+    return series[series > 0]
 
 
 def _to_quarterly(s: pd.Series, freq: str) -> pd.Series:

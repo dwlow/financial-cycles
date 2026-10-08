@@ -12,7 +12,7 @@ def gap(cycle: pd.Series) -> pd.Series:
 
 
 def flags(gap_df: pd.DataFrame, method: MethodConfig) -> pd.DataFrame:
-    """Step 7: 1 where the one-sided gap breaches the AM threshold, else 0.
+    """Step 7: 1 where the one-sided gap breaches its method threshold, else 0.
 
     ``gap_df`` has one column per index component (named by component). Quarters where a
     gap is missing stay NaN (not 0), so the index is undefined there rather than falsely 0.

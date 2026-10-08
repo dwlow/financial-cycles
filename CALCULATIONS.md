@@ -173,6 +173,18 @@ has **no warm-up** (Step 5).
 Applying the engine to another advanced market means swapping only `country_config`; the
 shared `method_config` keeps gaps comparable to the paper's thresholds.
 
+The emerging-market board lists the 25 requested economies. Its configured exploratory
+index uses credit, equity, and property, with the provided cycle-length bands: credit 5–43,
+equity 8–18, and property 4–29 quarters. The thresholds are 2.9%, 10.3%, and 7.5%,
+respectively, with normalized weights 0.242, 0.373, and 0.385 from the credit/equity/property
+model in Table 5. Total credit (7–44) and LTDR (6–23) are not included. These values have not
+been calibrated for emerging markets. FRED currently provides all three required series for
+11 of the 25 markets. Credit and equity are deflated by the existing IMF IFS CPI series;
+the BIS residential property index is already real. The score requires all three gaps and
+is reported at one latest-common-quarter “As of” date. Markets missing a required series
+remain unscored with the missing inputs listed; no provider series or substitutions are
+inferred.
+
 ## Interpretation / framing (important)
 
 Canada has essentially **no systemic banking crisis** in the Laeven–Valencia database, so:

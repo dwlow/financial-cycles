@@ -1,7 +1,8 @@
-"""Run the AM Overheating Index engine for one country.
+"""Run the AM Overheating Index or an exploratory emerging-market index.
 
 Wires the pipeline: config -> data prep (Steps 1-3) -> CF filter (Steps 4-5) ->
-gaps / flags / index (Steps 6-8).
+gaps (Step 6) -> scoring (Steps 7-8). Advanced markets use the paper's calibrated AM
+method; emerging markets use a separate exploratory method.
 
     python -m engine.run          # run Canada with the AM method
 
@@ -12,13 +13,12 @@ from __future__ import annotations
 import pandas as pd
 
 from . import filters, index
-from .config import AM_METHOD, CANADA, CountryConfig, MethodConfig
+from .config import AM_METHOD, CANADA, EM_METHOD, CountryConfig, MethodConfig
 from .data import prepare
 
 
-def run(country: CountryConfig = CANADA, method: MethodConfig = AM_METHOD) -> pd.DataFrame:
+def _gaps(country: CountryConfig, method: MethodConfig) -> pd.DataFrame:
     data = prepare(country)  # Steps 1-3
-
     # Steps 4-6: two-sided and one-sided percent gaps for every series. Only process
     # components this country actually supplies (a country may omit dashboard series, or
     # have a series dropped for lack of coverage); the index components are still required.
@@ -39,17 +39,36 @@ def run(country: CountryConfig = CANADA, method: MethodConfig = AM_METHOD) -> pd
         c1.iloc[: band.high] = float("nan")
         result[f"gap_2s_{name}"] = index.gap(filters.two_sided(series, band, method.cf_drift))
         result[f"gap_1s_{name}"] = index.gap(c1)
-    res = pd.DataFrame(result).sort_index()
+    return pd.DataFrame(result).sort_index()
 
-    # Steps 7-8: flags + Overheating Index on the one-sided gaps of the index components.
+
+def _score(res: pd.DataFrame, method: MethodConfig) -> pd.DataFrame:
+    """Add flags and the weighted index where all required gaps are available."""
     gap_1s = res[[f"gap_1s_{n}" for n in method.index_components]].copy()
     gap_1s.columns = list(method.index_components)
     flag_df = index.flags(gap_1s, method)
-    for n in method.index_components:
-        res[f"flag_{n}"] = flag_df[n]
+    for name in method.index_components:
+        res[f"flag_{name}"] = flag_df[name]
     res["OI"] = index.overheating_index(flag_df, method)
+    return res
 
+
+def run_monitor(country: CountryConfig, method: MethodConfig = EM_METHOD) -> pd.DataFrame:
+    """Return emerging-market gaps and the exploratory credit/equity/property index."""
+    if country.market_group != "emerging":
+        raise ValueError(f"{country.name}: run_monitor is only for emerging-market configs")
+    res = _score(_gaps(country, method), method)
     res.attrs["country"] = country.name
+    res.attrs["market_group"] = country.market_group
+    return res
+
+
+def run(country: CountryConfig = CANADA, method: MethodConfig = AM_METHOD) -> pd.DataFrame:
+    if country.market_group != "advanced":
+        raise ValueError(f"{country.name}: emerging markets must use run_monitor, not AM scoring")
+    res = _score(_gaps(country, method), method)
+    res.attrs["country"] = country.name
+    res.attrs["market_group"] = country.market_group
     return res
 
 

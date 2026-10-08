@@ -99,6 +99,23 @@ source**, because FRED's OECD CPI lags a year or more. Adapters live in `fetch_d
 | **StatCan** / **Bank of Canada** | CA CPI / output-gap cross-check | Canada only. |
 | **IMF IFS** (via DBnomics) | CPI and GDP for non-EU markets; all three series for Hong Kong | Open, no key; uniform across countries; **lags ~1 year**. Hong Kong equity is `FPE_IX`, a documented proxy for OECD `SPASTT01`. |
 
+### Emerging-market monitor series
+
+The emerging-market board lists Argentina, Brazil, Bulgaria, China, Colombia, Croatia,
+Hungary, India, Indonesia, Lithuania, Malaysia, Mexico, Philippines, Poland, Russia,
+Serbia, South Africa, Thailand, Turkey, Ukraine, Uruguay, Latvia, Kazakhstan, Romania,
+and Vietnam. FRED currently provides the full credit/equity/property input set for 10:
+Brazil, China, Hungary, India, Indonesia, Mexico, Poland, Russia, South Africa, and Turkey.
+Malaysia's and Thailand's credit and property inputs are on FRED; their equity inputs use
+the previously verified IMF IFS quarterly `FPE_IX` series. Credit is BIS break-adjusted total credit to the private non-financial sector
+(for example, `CRDQBRAPABIS`); equity is the OECD quarterly share-price index (for example,
+`SPASTT01BRQ661N`); property is the BIS real residential property price index (for example,
+`QBRR628BIS`). CPI for deflating credit and equity uses the existing IMF IFS monthly
+`PCPI_IX` series via DBnomics. FRED series identifiers and data vintages are recorded in
+`data/raw/manifest.json`; the public graph CSV endpoint is used for FRED downloads, so no
+FRED API key is needed for these series. Other markets are excluded when one or more
+required series are unavailable; no replacement identifiers are inferred.
+
 ## Data providers (for attribution)
 
 - Federal Reserve Bank of St. Louis (FRED) — data aggregator.

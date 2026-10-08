@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch & cache the raw series for the AM financial-cycle overheating analysis.
+"""Fetch & cache the raw series for the financial-cycle tracker.
 
 Multi-country. Each country's series are pulled from a provider and normalized to a
 CSV in data/raw/, and recorded in a manifest that pins the data vintage. The engine
@@ -11,9 +11,11 @@ Providers:
     statcan  StatCan Web Data Service (WDS), by vector id             -> observation_date,value
     boc      Bank of Canada Valet API, by series code                 -> observation_date,value
     abs      ABS Data API (SDMX), by dataflow/key                     -> observation_date,value
+    imf_ifs  IMF IFS via DBnomics                                     -> observation_date,value
 
 Usage:
     python fetch_data.py                       # fetch series not already cached (all countries)
+    python fetch_data.py --emerging            # fetch emerging-market series only
     python fetch_data.py --refresh             # re-fetch everything (quarterly update)
     python fetch_data.py --country Australia   # limit to one country (with/without --refresh)
     python fetch_data.py --list                # list configured series, don't fetch
@@ -21,6 +23,8 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import csv
+import io
 import json
 import os
 import subprocess
@@ -30,6 +34,10 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 
+from engine.config import (
+    EM_FRED_SERIES, EM_MARKET_CODES, EM_NON_FRED_SERIES, EM_SOURCE_SERIES,
+)
+
 RAW = Path(__file__).resolve().parent / "data" / "raw"
 MANIFEST = RAW / "manifest.json"
 TIMEOUT = 40
@@ -37,6 +45,7 @@ PACE = 1.5           # seconds between live fetches — polite; avoids self-thro
 UA = "am-overheating/1.0"
 
 FRED_API_URL = "https://api.stlouisfed.org/fred/series/observations"
+FRED_GRAPH_URL = "https://fred.stlouisfed.org/graph/fredgraph.csv"
 STATCAN_URL = "https://www150.statcan.gc.ca/t1/wds/rest/getDataFromVectorsAndLatestNPeriods"
 BOC_URL = "https://www.bankofcanada.ca/valet/observations/{rid}/json"
 ABS_URL = "https://data.api.abs.gov.au/rest/data/{rid}?detail=dataonly"  # version-less key -> latest dataflow
@@ -58,7 +67,7 @@ DBNOMICS_IFS_URL = "https://api.db.nomics.world/v22/series/IMF/IFS/{rid}?observa
 class Src:
     """One raw series: where it lands, which provider serves it, its remote id, a blurb."""
     file: str        # output filename in data/raw
-    provider: str    # 'fred' | 'statcan' | 'boc' | 'abs'
+    provider: str    # one of FETCHERS' provider keys
     rid: str         # remote id / key ('CPI/1.10001.10.50.Q' for abs; str vector id for statcan)
     desc: str
 
@@ -151,6 +160,41 @@ for _name, _iso, _geo in EU_AM:
         Src(f"{_iso}__cpi.csv",                  "eu_hicp", _geo,                 f"HICP all-items, {_name}, monthly index (Eurostat)"),
     ]
 
+# Emerging-market CPI uses the already-verified IMF IFS series; credit, equity, and
+# property inputs use only country-specific FRED IDs confirmed to return observations.
+_EM_FRED_FILES = {
+    "credit": ("{iso}__fred_credit.csv",
+               "BIS break-adjusted total credit to private non-financial sector, {name}"),
+    "equity": ("{iso}__fred_equity.csv",
+               "OECD quarterly share-price index, {name}"),
+    "property": ("{iso}__fred_property.csv",
+                 "BIS real residential property price index, {name}"),
+}
+_EM_CPI_SOURCE = ("M.{iso}.PCPI_IX", "{iso}__cpi.csv",
+                  "CPI all-items, {name}, monthly (IMF IFS via DBnomics)")
+for _name, _iso in EM_MARKET_CODES:
+    COUNTRIES[_name] = []
+    if "cpi" in EM_SOURCE_SERIES[_name]:
+        _rid, _file, _desc = _EM_CPI_SOURCE
+        COUNTRIES[_name].append(
+            Src(_file.format(iso=_iso), "imf_ifs", _rid.format(iso=_iso),
+                _desc.format(name=_name))
+        )
+    for _component, _rid in EM_FRED_SERIES.get(_name, {}).items():
+        _file, _desc = _EM_FRED_FILES[_component]
+        COUNTRIES[_name].append(
+            Src(_file.format(iso=_iso), "fred_graph", _rid, _desc.format(name=_name))
+        )
+    if _name in EM_NON_FRED_SERIES and "equity" in EM_NON_FRED_SERIES[_name]:
+        COUNTRIES[_name].append(
+            Src(
+                EM_NON_FRED_SERIES[_name]["equity"].file,
+                "imf_ifs",
+                f"Q.{_iso}.FPE_IX",
+                f"Share prices, {_name}, quarterly (IMF IFS FPE_IX index)",
+            )
+        )
+
 
 def _curl(extra: list[str], what: str) -> str:
     """Run curl with shared flags; return stdout or raise. No --fail, so HTTP-error bodies
@@ -198,6 +242,28 @@ def fetch_fred(rid: str) -> str:
     lines = [f"observation_date,{rid}"]
     lines += [f"{o['date']},{o['value']}" for o in data["observations"]]
     return "\n".join(lines) + "\n"
+
+
+def fetch_fred_graph(rid: str) -> str:
+    """Fetch a FRED public graph CSV, which does not require an API key."""
+    url = f"{FRED_GRAPH_URL}?id={rid}"
+    try:
+        out = _curl(["-f", url], f"FRED graph {rid}")
+    except RuntimeError as graph_error:
+        try:
+            _fred_key()
+        except RuntimeError:
+            raise RuntimeError(
+                f"FRED public CSV request failed for {rid}; configure FRED_API_KEY "
+                "to retry through the FRED observations API"
+            ) from graph_error
+        return fetch_fred(rid)
+    rows = list(csv.reader(io.StringIO(out)))
+    if not rows or rows[0] != ["observation_date", rid]:
+        raise ValueError(f"FRED graph returned an unexpected CSV header for {rid}")
+    if not any(len(row) > 1 and row[1] not in ("", ".") for row in rows[1:]):
+        raise ValueError(f"FRED graph returned no observations for {rid}")
+    return out
 
 
 def fetch_statcan(rid: str) -> str:
@@ -318,7 +384,8 @@ def fetch_imf_ifs(rid: str) -> str:
     return "observation_date,value\n" + "\n".join(f"{dte},{v}" for dte, v in recs) + "\n"
 
 
-FETCHERS = {"fred": fetch_fred, "statcan": fetch_statcan, "boc": fetch_boc, "abs": fetch_abs,
+FETCHERS = {"fred": fetch_fred, "fred_graph": fetch_fred_graph,
+            "statcan": fetch_statcan, "boc": fetch_boc, "abs": fetch_abs,
             "eu_hicp": fetch_eu_hicp, "eu_gdp": fetch_eu_gdp, "ons": fetch_ons,
             "imf_ifs": fetch_imf_ifs}
 
@@ -335,12 +402,20 @@ def summarize(text: str) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--refresh", action="store_true", help="re-fetch every series even if cached")
-    ap.add_argument("--country", help="limit to one country (e.g. Australia)")
+    selection = ap.add_mutually_exclusive_group()
+    selection.add_argument("--country", help="limit to one country (e.g. Australia)")
+    selection.add_argument("--emerging", action="store_true",
+                           help="limit fetching to the configured emerging markets")
     ap.add_argument("--list", action="store_true", help="list configured series and exit")
     args = ap.parse_args()
 
+    emerging_names = {name for name, _iso in EM_MARKET_CODES}
     countries = {k: v for k, v in COUNTRIES.items()
-                 if not args.country or k.lower() == args.country.lower()}
+                 if (
+                     args.country and k.lower() == args.country.lower()
+                     or args.emerging and k in emerging_names
+                     or not args.country and not args.emerging
+                 )}
     if args.country and not countries:
         print(f"unknown country '{args.country}'; known: {', '.join(COUNTRIES)}", file=sys.stderr)
         return 2
