@@ -1,15 +1,15 @@
 {
   "countries": {
     "Canada": {
-      "vintage": "2026-07-23T17:36:17+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "real_gdp__NGDPRSAXDCCAQ.csv": {
           "provider": "fred",
           "rid": "NGDPRSAXDCCAQ",
           "description": "Real GDP, Canada, SA, quarterly (index)",
-          "n_obs": 261,
+          "n_obs": 262,
           "first_date": "1961-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "share_prices_nominal__SPASTT01CAQ661N.csv": {
           "provider": "fred",
@@ -79,9 +79,9 @@
           "provider": "statcan",
           "rid": "41690973",
           "description": "CPI all items, Canada, monthly, NSA, 2002=100 (StatCan v41690973)",
-          "n_obs": 1350,
+          "n_obs": 1352,
           "first_date": "1914-01-01",
-          "last_date": "2026-06-01"
+          "last_date": "2026-08-01"
         },
         "boc_output_gap_mpr__INDINF_OUTGAPMPR_Q.csv": {
           "provider": "boc",
@@ -110,15 +110,15 @@
       }
     },
     "Australia": {
-      "vintage": "2026-08-12T15:37:28+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "AU__real_gdp.csv": {
           "provider": "fred",
           "rid": "NGDPRSAXDCAUQ",
           "description": "Real GDP, Australia, SA, quarterly (index)",
-          "n_obs": 267,
+          "n_obs": 268,
           "first_date": "1959-07-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "AU__share_prices_nominal.csv": {
           "provider": "fred",
@@ -139,15 +139,15 @@
       }
     },
     "United States": {
-      "vintage": "2026-08-12T19:36:15+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "US__real_gdp.csv": {
           "provider": "fred",
           "rid": "NGDPRSAXDCUSQ",
           "description": "Real GDP, US, SA, quarterly (index)",
-          "n_obs": 305,
+          "n_obs": 306,
           "first_date": "1950-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "US__share_prices_nominal.csv": {
           "provider": "fred",
@@ -161,14 +161,14 @@
           "provider": "fred",
           "rid": "CPIAUCSL",
           "description": "CPI-U all items, US, monthly, SA (BLS via FRED) \u2014 current, used as deflator",
-          "n_obs": 954,
+          "n_obs": 955,
           "first_date": "1947-01-01",
-          "last_date": "2026-07-01"
+          "last_date": "2026-08-01"
         }
       }
     },
     "Germany": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "DE__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -197,7 +197,7 @@
       }
     },
     "France": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "FR__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -226,7 +226,7 @@
       }
     },
     "Austria": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "AT__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -255,15 +255,15 @@
       }
     },
     "Belgium": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "BE__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "BE",
           "description": "Real GDP (chain-linked vol., SA), Belgium, quarterly (Eurostat)",
-          "n_obs": 125,
+          "n_obs": 126,
           "first_date": "1995-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "BE__share_prices_nominal.csv": {
           "provider": "fred",
@@ -284,7 +284,7 @@
       }
     },
     "Czech Republic": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "CZ__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -313,15 +313,15 @@
       }
     },
     "Denmark": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "DK__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "DK",
           "description": "Real GDP (chain-linked vol., SA), Denmark, quarterly (Eurostat)",
-          "n_obs": 125,
+          "n_obs": 126,
           "first_date": "1995-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "DK__share_prices_nominal.csv": {
           "provider": "fred",
@@ -342,7 +342,7 @@
       }
     },
     "Estonia": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "EE__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -371,7 +371,7 @@
       }
     },
     "Finland": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "FI__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -400,15 +400,15 @@
       }
     },
     "Greece": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "GR__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "EL",
           "description": "Real GDP (chain-linked vol., SA), Greece, quarterly (Eurostat)",
-          "n_obs": 125,
+          "n_obs": 126,
           "first_date": "1995-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "GR__share_prices_nominal.csv": {
           "provider": "fred",
@@ -429,7 +429,7 @@
       }
     },
     "Ireland": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "IE__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -458,7 +458,7 @@
       }
     },
     "Italy": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "IT__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -487,15 +487,15 @@
       }
     },
     "Luxembourg": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "LU__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "LU",
           "description": "Real GDP (chain-linked vol., SA), Luxembourg, quarterly (Eurostat)",
-          "n_obs": 125,
+          "n_obs": 126,
           "first_date": "1995-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "LU__share_prices_nominal.csv": {
           "provider": "fred",
@@ -516,7 +516,7 @@
       }
     },
     "Netherlands": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "NL__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -545,15 +545,15 @@
       }
     },
     "Portugal": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "PT__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "PT",
           "description": "Real GDP (chain-linked vol., SA), Portugal, quarterly (Eurostat)",
-          "n_obs": 125,
+          "n_obs": 126,
           "first_date": "1995-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "PT__share_prices_nominal.csv": {
           "provider": "fred",
@@ -574,15 +574,15 @@
       }
     },
     "Slovak Republic": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "SK__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "SK",
           "description": "Real GDP (chain-linked vol., SA), Slovak Republic, quarterly (Eurostat)",
-          "n_obs": 125,
+          "n_obs": 126,
           "first_date": "1995-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "SK__share_prices_nominal.csv": {
           "provider": "fred",
@@ -603,15 +603,15 @@
       }
     },
     "Slovenia": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "SI__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "SI",
           "description": "Real GDP (chain-linked vol., SA), Slovenia, quarterly (Eurostat)",
-          "n_obs": 121,
+          "n_obs": 122,
           "first_date": "1996-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "SI__share_prices_nominal.csv": {
           "provider": "fred",
@@ -632,7 +632,7 @@
       }
     },
     "Spain": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "ES__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -661,7 +661,7 @@
       }
     },
     "Sweden": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "SE__real_gdp.csv": {
           "provider": "eu_gdp",
@@ -690,15 +690,15 @@
       }
     },
     "Iceland": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "IS__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "IS",
           "description": "Real GDP (chain-linked vol., SA), Iceland, quarterly (Eurostat)",
-          "n_obs": 125,
+          "n_obs": 126,
           "first_date": "1995-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "IS__share_prices_nominal.csv": {
           "provider": "fred",
@@ -719,15 +719,15 @@
       }
     },
     "Norway": {
-      "vintage": "2026-08-12T21:04:07+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "NO__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "NO",
           "description": "Real GDP (chain-linked vol., SA), Norway, quarterly (Eurostat)",
-          "n_obs": 193,
+          "n_obs": 194,
           "first_date": "1978-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "NO__share_prices_nominal.csv": {
           "provider": "fred",
@@ -748,15 +748,15 @@
       }
     },
     "United Kingdom": {
-      "vintage": "2026-08-12T21:55:23+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "GB__real_gdp.csv": {
           "provider": "fred",
           "rid": "NGDPRSAXDCGBQ",
           "description": "Real GDP, UK, SA, quarterly (index)",
-          "n_obs": 285,
+          "n_obs": 286,
           "first_date": "1955-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "GB__share_prices_nominal.csv": {
           "provider": "fred",
@@ -770,22 +770,22 @@
           "provider": "ons",
           "rid": "economy/inflationandpriceindices/timeseries/d7bt/mm23",
           "description": "CPI all-items index, UK, monthly (ONS D7BT / MM23) \u2014 current",
-          "n_obs": 462,
+          "n_obs": 464,
           "first_date": "1988-01-01",
-          "last_date": "2026-06-01"
+          "last_date": "2026-08-01"
         }
       }
     },
     "Japan": {
-      "vintage": "2026-08-12T22:06:10+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "JP__real_gdp.csv": {
           "provider": "fred",
           "rid": "NGDPRSAXDCJPQ",
           "description": "Real GDP, Japan, SA, quarterly (index)",
-          "n_obs": 129,
+          "n_obs": 130,
           "first_date": "1994-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "JP__share_prices_nominal.csv": {
           "provider": "fred",
@@ -806,15 +806,15 @@
       }
     },
     "Switzerland": {
-      "vintage": "2026-08-12T22:10:54+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "CH__real_gdp.csv": {
           "provider": "eu_gdp",
           "rid": "CH",
           "description": "Real GDP (chain-linked vol., SA), Switzerland, quarterly (Eurostat)",
-          "n_obs": 125,
+          "n_obs": 126,
           "first_date": "1995-01-01",
-          "last_date": "2026-01-01"
+          "last_date": "2026-04-01"
         },
         "CH__share_prices_nominal.csv": {
           "provider": "fred",
@@ -835,7 +835,7 @@
       }
     },
     "Korea": {
-      "vintage": "2026-08-12T22:12:34+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "KR__real_gdp.csv": {
           "provider": "fred",
@@ -864,7 +864,7 @@
       }
     },
     "Israel": {
-      "vintage": "2026-08-12T22:15:25+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "IL__real_gdp.csv": {
           "provider": "imf_ifs",
@@ -893,7 +893,7 @@
       }
     },
     "New Zealand": {
-      "vintage": "2026-08-12T22:15:33+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "NZ__real_gdp.csv": {
           "provider": "imf_ifs",
@@ -922,7 +922,7 @@
       }
     },
     "Hong Kong": {
-      "vintage": "2026-08-18T18:03:20+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "HK__real_gdp.csv": {
           "provider": "imf_ifs",
@@ -951,7 +951,7 @@
       }
     },
     "Brazil": {
-      "vintage": "2026-09-29T20:02:14+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "BR__cpi.csv": {
           "provider": "imf_ifs",
@@ -988,7 +988,7 @@
       }
     },
     "India": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "IN__cpi.csv": {
           "provider": "imf_ifs",
@@ -1025,7 +1025,7 @@
       }
     },
     "Mexico": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "MX__cpi.csv": {
           "provider": "imf_ifs",
@@ -1062,7 +1062,7 @@
       }
     },
     "South Africa": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "ZA__cpi.csv": {
           "provider": "imf_ifs",
@@ -1099,7 +1099,7 @@
       }
     },
     "Argentina": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "AR__fred_credit.csv": {
           "provider": "fred_graph",
@@ -1112,7 +1112,7 @@
       }
     },
     "Bulgaria": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "BG__cpi.csv": {
           "provider": "imf_ifs",
@@ -1133,7 +1133,7 @@
       }
     },
     "China": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "CN__cpi.csv": {
           "provider": "imf_ifs",
@@ -1170,7 +1170,7 @@
       }
     },
     "Colombia": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "CO__cpi.csv": {
           "provider": "imf_ifs",
@@ -1191,7 +1191,7 @@
       }
     },
     "Croatia": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "HR__cpi.csv": {
           "provider": "imf_ifs",
@@ -1212,7 +1212,7 @@
       }
     },
     "Hungary": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "HU__cpi.csv": {
           "provider": "imf_ifs",
@@ -1249,7 +1249,7 @@
       }
     },
     "Indonesia": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "ID__cpi.csv": {
           "provider": "imf_ifs",
@@ -1286,7 +1286,7 @@
       }
     },
     "Lithuania": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "LT__cpi.csv": {
           "provider": "imf_ifs",
@@ -1307,7 +1307,7 @@
       }
     },
     "Malaysia": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "MY__cpi.csv": {
           "provider": "imf_ifs",
@@ -1344,7 +1344,7 @@
       }
     },
     "Philippines": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "PH__cpi.csv": {
           "provider": "imf_ifs",
@@ -1365,7 +1365,7 @@
       }
     },
     "Poland": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "PL__cpi.csv": {
           "provider": "imf_ifs",
@@ -1402,7 +1402,7 @@
       }
     },
     "Russia": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "RU__cpi.csv": {
           "provider": "imf_ifs",
@@ -1439,7 +1439,7 @@
       }
     },
     "Serbia": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "RS__cpi.csv": {
           "provider": "imf_ifs",
@@ -1460,7 +1460,7 @@
       }
     },
     "Thailand": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "TH__cpi.csv": {
           "provider": "imf_ifs",
@@ -1497,7 +1497,7 @@
       }
     },
     "Turkey": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "TR__cpi.csv": {
           "provider": "imf_ifs",
@@ -1534,7 +1534,7 @@
       }
     },
     "Ukraine": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "UA__cpi.csv": {
           "provider": "imf_ifs",
@@ -1547,7 +1547,7 @@
       }
     },
     "Uruguay": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "UY__cpi.csv": {
           "provider": "imf_ifs",
@@ -1560,7 +1560,7 @@
       }
     },
     "Latvia": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "LV__cpi.csv": {
           "provider": "imf_ifs",
@@ -1581,7 +1581,7 @@
       }
     },
     "Kazakhstan": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "KZ__cpi.csv": {
           "provider": "imf_ifs",
@@ -1594,7 +1594,7 @@
       }
     },
     "Romania": {
-      "vintage": "2026-09-29T21:15:50+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "RO__cpi.csv": {
           "provider": "imf_ifs",
@@ -1615,7 +1615,7 @@
       }
     },
     "Vietnam": {
-      "vintage": "2026-09-29T20:22:31+00:00",
+      "vintage": "2026-10-13T20:23:40+00:00",
       "series": {
         "VN__cpi.csv": {
           "provider": "imf_ifs",
