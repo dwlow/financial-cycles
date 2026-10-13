@@ -14,6 +14,7 @@
     <h1>Advanced-Market Overheating Index</h1>
     <nav class="tabs">
       <a class="tab" href="index.html">Board</a>
+      <a class="tab" href="index.html#emerging">Emerging markets</a>
       <a class="tab" href="about.html">About</a>
       <a class="tab active" href="methodology.html">Methodology</a>
       <a class="tab" href="references.html">References</a>
@@ -179,6 +180,27 @@
           The cost of that is the end-weight: standing in for data that had not happened yet
           pulls a real-time reading toward zero, so a boom still building registers milder
           than its full size.</p>
+
+        <h3>Emerging-market monitor and exploratory score</h3>
+        <p>The board lists 25 emerging markets. Its configured exploratory index uses
+          credit, equity, and property gaps, with Christiano–Fitzgerald filter bands of
+          credit <span class="mono">5–43</span>, equity <span class="mono">8–18</span>, and
+          property <span class="mono">4–29</span> quarters. Total credit
+          <span class="mono">7–44</span> and LTDR <span class="mono">6–23</span> are not
+          included.</p>
+        <p>The thresholds are credit <span class="mono">2.9%</span>, equity
+          <span class="mono">10.3%</span>, and property <span class="mono">7.5%</span>;
+          normalized weights are <span class="mono">0.242</span>,
+          <span class="mono">0.373</span>, and <span class="mono">0.385</span>,
+          respectively, from the credit/equity/property model in Table 5. These have not
+          been calibrated for emerging markets: the resulting score is not a validated
+          early-warning index and is not directly comparable to an AM score. It is reported
+          only for quarters with all three component gaps. The score, all three gaps, and
+          the single “As of” date shown on the board refer to the latest common quarter.
+          FRED and the existing IMF integration provide the three inputs for 12 of the
+          requested markets; the others are
+          excluded and named below the table. Their unavailable inputs are documented in the
+          source configuration. No substitute data sources are inferred.</p>
 
         <p class="muted" style="font-size:13px">Source: Christiano &amp; Fitzgerald,
           <em>The Band Pass Filter</em>, eqs (1.2)–(1.4); bands and thresholds from Chen &amp;

@@ -14,6 +14,7 @@
     <h1>Advanced-Market Overheating Index</h1>
     <nav class="tabs">
       <a class="tab" href="index.html">Board</a>
+      <a class="tab" href="index.html#emerging">Emerging markets</a>
       <a class="tab active" href="about.html">About</a>
       <a class="tab" href="methodology.html">Methodology</a>
       <a class="tab" href="references.html">References</a>
@@ -54,6 +55,17 @@
         <p class="muted">The weights (0.497 and 0.503) come from each indicator's crisis-prediction
           reliability in the paper. They are near-equal by coincidence, so the value is essentially a
           count of the signals above their thresholds.</p>
+
+        <h3>Emerging-market monitors</h3>
+        <p>The board lists 25 emerging markets. The exploratory index is now configured for
+          credit, equity, and property gaps, using thresholds of 2.9%, 10.3%, and 7.5% and
+          normalized weights of 0.242, 0.373, and 0.385. Their cycle bands are 5–43, 8–18,
+          and 4–29 quarters, respectively. These thresholds and weights are from the
+          credit/equity/property model in Table 5 and have not been calibrated for emerging
+          markets. Complete inputs are configured for 12 markets using FRED and the existing
+          IMF integration; the other markets
+          remain excluded and are listed below the table. See
+          <a href="methodology.html">Methodology</a> for details.</p>
 
         <p>Every calculated trend comes from the Christiano–Fitzgerald
           band-pass filter. The full pipeline, from raw data through where the filter bands come

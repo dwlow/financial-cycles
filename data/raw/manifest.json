@@ -949,6 +949,683 @@
           "last_date": "2025-05-01"
         }
       }
+    },
+    "Brazil": {
+      "vintage": "2026-09-29T20:02:14+00:00",
+      "series": {
+        "BR__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.BR.PCPI_IX",
+          "description": "CPI all-items, Brazil, monthly (IMF IFS via DBnomics)",
+          "n_obs": 548,
+          "first_date": "1979-12-01",
+          "last_date": "2025-07-01"
+        },
+        "BR__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQBRAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Brazil",
+          "n_obs": 129,
+          "first_date": "1993-10-01",
+          "last_date": "2025-10-01"
+        },
+        "BR__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01BRQ661N",
+          "description": "OECD quarterly share-price index, Brazil",
+          "n_obs": 186,
+          "first_date": "1980-01-01",
+          "last_date": "2026-04-01"
+        },
+        "BR__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QBRR628BIS",
+          "description": "BIS real residential property price index, Brazil",
+          "n_obs": 101,
+          "first_date": "2001-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "India": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "IN__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.IN.PCPI_IX",
+          "description": "CPI all-items, India, monthly (IMF IFS via DBnomics)",
+          "n_obs": 822,
+          "first_date": "1957-01-01",
+          "last_date": "2025-06-01"
+        },
+        "IN__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQINAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, India",
+          "n_obs": 299,
+          "first_date": "1951-04-01",
+          "last_date": "2025-10-01"
+        },
+        "IN__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01INQ661N",
+          "description": "OECD quarterly share-price index, India",
+          "n_obs": 278,
+          "first_date": "1957-01-01",
+          "last_date": "2026-04-01"
+        },
+        "IN__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QINR628BIS",
+          "description": "BIS real residential property price index, India",
+          "n_obs": 69,
+          "first_date": "2009-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Mexico": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "MX__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.MX.PCPI_IX",
+          "description": "CPI all-items, Mexico, monthly (IMF IFS via DBnomics)",
+          "n_obs": 822,
+          "first_date": "1957-01-01",
+          "last_date": "2025-06-01"
+        },
+        "MX__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQMXAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Mexico",
+          "n_obs": 181,
+          "first_date": "1980-10-01",
+          "last_date": "2025-10-01"
+        },
+        "MX__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01MXQ661N",
+          "description": "OECD quarterly share-price index, Mexico",
+          "n_obs": 226,
+          "first_date": "1970-01-01",
+          "last_date": "2026-04-01"
+        },
+        "MX__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QMXR628BIS",
+          "description": "BIS real residential property price index, Mexico",
+          "n_obs": 85,
+          "first_date": "2005-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "South Africa": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "ZA__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.ZA.PCPI_IX",
+          "description": "CPI all-items, South Africa, monthly (IMF IFS via DBnomics)",
+          "n_obs": 817,
+          "first_date": "1957-01-01",
+          "last_date": "2025-01-01"
+        },
+        "ZA__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQZAAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, South Africa",
+          "n_obs": 244,
+          "first_date": "1965-01-01",
+          "last_date": "2025-10-01"
+        },
+        "ZA__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01ZAQ661N",
+          "description": "OECD quarterly share-price index, South Africa",
+          "n_obs": 266,
+          "first_date": "1960-01-01",
+          "last_date": "2026-04-01"
+        },
+        "ZA__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QZAR628BIS",
+          "description": "BIS real residential property price index, South Africa",
+          "n_obs": 241,
+          "first_date": "1966-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Argentina": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "AR__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQARAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Argentina",
+          "n_obs": 343,
+          "first_date": "1940-04-01",
+          "last_date": "2025-10-01"
+        }
+      }
+    },
+    "Bulgaria": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "BG__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.BG.PCPI_IX",
+          "description": "CPI all-items, Bulgaria, monthly (IMF IFS via DBnomics)",
+          "n_obs": 414,
+          "first_date": "1991-01-01",
+          "last_date": "2025-07-01"
+        },
+        "BG__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QBGR628BIS",
+          "description": "BIS real residential property price index, Bulgaria",
+          "n_obs": 113,
+          "first_date": "1998-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "China": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "CN__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.CN.PCPI_IX",
+          "description": "CPI all-items, China, monthly (IMF IFS via DBnomics)",
+          "n_obs": 475,
+          "first_date": "1986-01-01",
+          "last_date": "2025-07-01"
+        },
+        "CN__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQCNAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, China",
+          "n_obs": 161,
+          "first_date": "1985-10-01",
+          "last_date": "2025-10-01"
+        },
+        "CN__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01CNQ661N",
+          "description": "OECD quarterly share-price index, China",
+          "n_obs": 110,
+          "first_date": "1999-01-01",
+          "last_date": "2026-04-01"
+        },
+        "CN__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QCNR628BIS",
+          "description": "BIS real residential property price index, China",
+          "n_obs": 84,
+          "first_date": "2005-04-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Colombia": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "CO__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.CO.PCPI_IX",
+          "description": "CPI all-items, Colombia, monthly (IMF IFS via DBnomics)",
+          "n_obs": 847,
+          "first_date": "1955-01-01",
+          "last_date": "2025-07-01"
+        },
+        "CO__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QCOR628BIS",
+          "description": "BIS real residential property price index, Colombia",
+          "n_obs": 153,
+          "first_date": "1988-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Croatia": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "HR__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.HR.PCPI_IX",
+          "description": "CPI all-items, Croatia, monthly (IMF IFS via DBnomics)",
+          "n_obs": 475,
+          "first_date": "1986-01-01",
+          "last_date": "2025-07-01"
+        },
+        "HR__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QHRR628BIS",
+          "description": "BIS real residential property price index, Croatia",
+          "n_obs": 117,
+          "first_date": "1997-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Hungary": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "HU__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.HU.PCPI_IX",
+          "description": "CPI all-items, Hungary, monthly (IMF IFS via DBnomics)",
+          "n_obs": 595,
+          "first_date": "1976-01-01",
+          "last_date": "2025-07-01"
+        },
+        "HU__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQHUAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Hungary",
+          "n_obs": 225,
+          "first_date": "1969-10-01",
+          "last_date": "2025-10-01"
+        },
+        "HU__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01HUQ661N",
+          "description": "OECD quarterly share-price index, Hungary",
+          "n_obs": 142,
+          "first_date": "1991-01-01",
+          "last_date": "2026-04-01"
+        },
+        "HU__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QHUR628BIS",
+          "description": "BIS real residential property price index, Hungary",
+          "n_obs": 137,
+          "first_date": "1992-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Indonesia": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "ID__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.ID.PCPI_IX",
+          "description": "CPI all-items, Indonesia, monthly (IMF IFS via DBnomics)",
+          "n_obs": 691,
+          "first_date": "1968-01-01",
+          "last_date": "2025-07-01"
+        },
+        "ID__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQIDAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Indonesia",
+          "n_obs": 200,
+          "first_date": "1976-01-01",
+          "last_date": "2025-10-01"
+        },
+        "ID__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01IDQ661N",
+          "description": "OECD quarterly share-price index, Indonesia",
+          "n_obs": 116,
+          "first_date": "1997-07-01",
+          "last_date": "2026-04-01"
+        },
+        "ID__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QIDR628BIS",
+          "description": "BIS real residential property price index, Indonesia",
+          "n_obs": 97,
+          "first_date": "2002-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Lithuania": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "LT__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.LT.PCPI_IX",
+          "description": "CPI all-items, Lithuania, monthly (IMF IFS via DBnomics)",
+          "n_obs": 416,
+          "first_date": "1990-12-01",
+          "last_date": "2025-07-01"
+        },
+        "LT__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QLTR628BIS",
+          "description": "BIS real residential property price index, Lithuania",
+          "n_obs": 110,
+          "first_date": "1998-10-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Malaysia": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "MY__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.MY.PCPI_IX",
+          "description": "CPI all-items, Malaysia, monthly (IMF IFS via DBnomics)",
+          "n_obs": 822,
+          "first_date": "1957-01-01",
+          "last_date": "2025-06-01"
+        },
+        "MY__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQMYAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Malaysia",
+          "n_obs": 247,
+          "first_date": "1964-04-01",
+          "last_date": "2025-10-01"
+        },
+        "MY__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QMYR628BIS",
+          "description": "BIS real residential property price index, Malaysia",
+          "n_obs": 153,
+          "first_date": "1988-01-01",
+          "last_date": "2026-01-01"
+        },
+        "MY__share_prices_nominal.csv": {
+          "provider": "imf_ifs",
+          "rid": "Q.MY.FPE_IX",
+          "description": "Share prices, Malaysia, quarterly (IMF IFS FPE_IX index)",
+          "n_obs": 181,
+          "first_date": "1980-01-01",
+          "last_date": "2025-01-01"
+        }
+      }
+    },
+    "Philippines": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "PH__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.PH.PCPI_IX",
+          "description": "CPI all-items, Philippines, monthly (IMF IFS via DBnomics)",
+          "n_obs": 821,
+          "first_date": "1957-01-01",
+          "last_date": "2025-05-01"
+        },
+        "PH__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QPHR628BIS",
+          "description": "BIS real residential property price index, Philippines",
+          "n_obs": 73,
+          "first_date": "2008-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Poland": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "PL__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.PL.PCPI_IX",
+          "description": "CPI all-items, Poland, monthly (IMF IFS via DBnomics)",
+          "n_obs": 447,
+          "first_date": "1988-01-01",
+          "last_date": "2025-03-01"
+        },
+        "PL__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQPLAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Poland",
+          "n_obs": 136,
+          "first_date": "1992-01-01",
+          "last_date": "2025-10-01"
+        },
+        "PL__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01PLQ661N",
+          "description": "OECD quarterly share-price index, Poland",
+          "n_obs": 140,
+          "first_date": "1991-07-01",
+          "last_date": "2026-04-01"
+        },
+        "PL__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QPLR628BIS",
+          "description": "BIS real residential property price index, Poland",
+          "n_obs": 65,
+          "first_date": "2010-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Russia": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "RU__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.RU.PCPI_IX",
+          "description": "CPI all-items, Russia, monthly (IMF IFS via DBnomics)",
+          "n_obs": 368,
+          "first_date": "1992-01-01",
+          "last_date": "2025-02-01"
+        },
+        "RU__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQRUAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Russia",
+          "n_obs": 123,
+          "first_date": "1995-04-01",
+          "last_date": "2025-10-01"
+        },
+        "RU__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01RUQ661N",
+          "description": "OECD quarterly share-price index, Russia",
+          "n_obs": 115,
+          "first_date": "1997-10-01",
+          "last_date": "2026-04-01"
+        },
+        "RU__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QRUR628BIS",
+          "description": "BIS real residential property price index, Russia",
+          "n_obs": 101,
+          "first_date": "2001-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Serbia": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "RS__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.RS.PCPI_IX",
+          "description": "CPI all-items, Serbia, monthly (IMF IFS via DBnomics)",
+          "n_obs": 378,
+          "first_date": "1994-02-01",
+          "last_date": "2025-07-01"
+        },
+        "RS__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QRSR628BIS",
+          "description": "BIS real residential property price index, Serbia",
+          "n_obs": 105,
+          "first_date": "2000-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Thailand": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "TH__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.TH.PCPI_IX",
+          "description": "CPI all-items, Thailand, monthly (IMF IFS via DBnomics)",
+          "n_obs": 723,
+          "first_date": "1965-01-01",
+          "last_date": "2025-03-01"
+        },
+        "TH__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQTHAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Thailand",
+          "n_obs": 276,
+          "first_date": "1957-01-01",
+          "last_date": "2025-10-01"
+        },
+        "TH__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QTHR628BIS",
+          "description": "BIS real residential property price index, Thailand",
+          "n_obs": 141,
+          "first_date": "1991-01-01",
+          "last_date": "2026-01-01"
+        },
+        "TH__share_prices_nominal.csv": {
+          "provider": "imf_ifs",
+          "rid": "Q.TH.FPE_IX",
+          "description": "Share prices, Thailand, quarterly (IMF IFS FPE_IX index)",
+          "n_obs": 114,
+          "first_date": "1997-01-01",
+          "last_date": "2025-04-01"
+        }
+      }
+    },
+    "Turkey": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "TR__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.TR.PCPI_IX",
+          "description": "CPI all-items, Turkey, monthly (IMF IFS via DBnomics)",
+          "n_obs": 847,
+          "first_date": "1955-01-01",
+          "last_date": "2025-07-01"
+        },
+        "TR__fred_credit.csv": {
+          "provider": "fred_graph",
+          "rid": "CRDQTRAPABIS",
+          "description": "BIS break-adjusted total credit to private non-financial sector, Turkey",
+          "n_obs": 160,
+          "first_date": "1986-01-01",
+          "last_date": "2025-10-01"
+        },
+        "TR__fred_equity.csv": {
+          "provider": "fred_graph",
+          "rid": "SPASTT01TRQ661N",
+          "description": "OECD quarterly share-price index, Turkey",
+          "n_obs": 154,
+          "first_date": "1988-01-01",
+          "last_date": "2026-04-01"
+        },
+        "TR__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QTRR628BIS",
+          "description": "BIS real residential property price index, Turkey",
+          "n_obs": 65,
+          "first_date": "2010-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Ukraine": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "UA__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.UA.PCPI_IX",
+          "description": "CPI all-items, Ukraine, monthly (IMF IFS via DBnomics)",
+          "n_obs": 403,
+          "first_date": "1992-01-01",
+          "last_date": "2025-07-01"
+        }
+      }
+    },
+    "Uruguay": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "UY__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.UY.PCPI_IX",
+          "description": "CPI all-items, Uruguay, monthly (IMF IFS via DBnomics)",
+          "n_obs": 822,
+          "first_date": "1957-01-01",
+          "last_date": "2025-06-01"
+        }
+      }
+    },
+    "Latvia": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "LV__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.LV.PCPI_IX",
+          "description": "CPI all-items, Latvia, monthly (IMF IFS via DBnomics)",
+          "n_obs": 415,
+          "first_date": "1991-01-01",
+          "last_date": "2025-07-01"
+        },
+        "LV__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QLVR628BIS",
+          "description": "BIS real residential property price index, Latvia",
+          "n_obs": 81,
+          "first_date": "2006-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Kazakhstan": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "KZ__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.KZ.PCPI_IX",
+          "description": "CPI all-items, Kazakhstan, monthly (IMF IFS via DBnomics)",
+          "n_obs": 390,
+          "first_date": "1992-12-01",
+          "last_date": "2025-05-01"
+        }
+      }
+    },
+    "Romania": {
+      "vintage": "2026-09-29T21:15:50+00:00",
+      "series": {
+        "RO__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.RO.PCPI_IX",
+          "description": "CPI all-items, Romania, monthly (IMF IFS via DBnomics)",
+          "n_obs": 417,
+          "first_date": "1990-10-01",
+          "last_date": "2025-06-01"
+        },
+        "RO__fred_property.csv": {
+          "provider": "fred_graph",
+          "rid": "QROR628BIS",
+          "description": "BIS real residential property price index, Romania",
+          "n_obs": 69,
+          "first_date": "2009-01-01",
+          "last_date": "2026-01-01"
+        }
+      }
+    },
+    "Vietnam": {
+      "vintage": "2026-09-29T20:22:31+00:00",
+      "series": {
+        "VN__cpi.csv": {
+          "provider": "imf_ifs",
+          "rid": "M.VN.PCPI_IX",
+          "description": "CPI all-items, Vietnam, monthly (IMF IFS via DBnomics)",
+          "n_obs": 363,
+          "first_date": "1995-01-01",
+          "last_date": "2025-03-01"
+        }
+      }
     }
   }
 }
